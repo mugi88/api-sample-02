@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resource :sign_up, only: [:create]
+  resource :sign_in, only: [:create]
+  resources :posts, only: [:create, :update, :destroy, :index]
+  resources :users, only: [:update, :destroy, :index, :show] do
+    member do
+      get :timeline
+    end
+  end  
 end
